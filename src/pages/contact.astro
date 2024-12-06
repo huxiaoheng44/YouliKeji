@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ContactInfo from '../components/contact/ContactInfo.astro';
+---
+
+<Layout title="联系我们 - 教育机构名称">
+  <Hero
+    title="联系我们"
+    subtitle="随时为您提供帮助和咨询"
+    image="/images/contact/contact-hero.jpg"
+    opacity={0.6}
+  />
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <ContactInfo />
+      </div>
+    </div>
+  </section>
+</Layout>

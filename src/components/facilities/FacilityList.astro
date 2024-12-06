@@ -1,0 +1,10 @@
+---
+import { facilities } from '../../data/facilities';
+import FacilityCard from './FacilityCard.astro';
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {facilities.map(facility => (
+    <FacilityCard facility={facility} />
+  ))}
+</div>

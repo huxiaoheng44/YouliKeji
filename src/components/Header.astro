@@ -1,0 +1,51 @@
+---
+const navItems = [
+  { href: '/', text: '首页' },
+  { href: '/about', text: '关于我们' },
+  { href: '/facilities', text: '设施展示' },
+  { href: '/achievements', text: '成果展示' },
+  { href: '/admission', text: '招生信息' },
+  { href: '/contact', text: '联系我们' }
+];
+---
+
+<header class="fixed w-full bg-white shadow-md z-50">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-primary">有理科技</a>
+      
+      <div class="hidden md:flex space-x-6">
+        {navItems.map(item => (
+          <a href={item.href} class="text-gray-700 hover:text-primary transition-colors">
+            {item.text}
+          </a>
+        ))}
+      </div>
+
+      <button class="md:hidden" id="menuButton">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="md:hidden hidden" id="mobileMenu">
+      <div class="flex flex-col space-y-4 mt-4">
+        {navItems.map(item => (
+          <a href={item.href} class="text-gray-700 hover:text-primary transition-colors">
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

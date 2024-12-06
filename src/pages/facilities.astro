@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FacilityList from '../components/facilities/FacilityList.astro';
+---
+
+<Layout title="设施展示 - 教育机构名称">
+  <Hero
+    title="一流的教育设施"
+    subtitle="为学生提供最好的学习环境"
+    image="/images/facilities/facilities-hero.jpg"
+    opacity={0.6}
+  />
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">我们的设施</h2>
+        <p class="text-gray-600">
+          我们致力于为学生提供最优质的学习环境，配备先进的教学设施和完善的配套服务。
+          每个设施都经过精心设计，旨在激发学生的学习兴趣和创造力。
+        </p>
+      </div>
+
+      <FacilityList />
+    </div>
+  </section>
+</Layout>

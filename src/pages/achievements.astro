@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CertificateCard from '../components/achievements/CertificateCard.astro';
+import RankingCard from '../components/achievements/RankingCard.astro';
+import { certificates, rankings } from '../data/achievements';
+---
+
+<Layout title="成果展示 - 教育机构名称">
+  <Hero
+    title="成果展示"
+    subtitle="见证我们的教育成就"
+    image="/images/achievements/achievements-hero.jpg"
+    opacity={0.6}
+  />
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <!-- 机构排名 -->
+        <div class="mb-20">
+          <h2 class="text-3xl font-bold text-center mb-12">机构排名</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {rankings.map(ranking => (
+              <RankingCard ranking={ranking} />
+            ))}
+          </div>
+        </div>
+
+        <!-- 学生荣誉证书 -->
+        <div>
+          <h2 class="text-3xl font-bold text-center mb-12">学生荣誉</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certificates.map(certificate => (
+              <CertificateCard certificate={certificate} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

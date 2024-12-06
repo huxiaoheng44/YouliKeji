@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import NewsCard from '../components/news/NewsCard.astro';
+import { newsItems } from '../data/news';
+
+const features = [
+  {
+    title: '专业师资',
+    description: '拥有多年教学经验的优秀教师团队',
+    icon: '👨‍🏫'
+  },
+  {
+    title: '优质设施',
+    description: '先进的教学设备和舒适的学习环境',
+    icon: '🏫'
+  },
+  {
+    title: '卓越成果',
+    description: '学生在各类考试和比赛中取得优异成绩',
+    icon: '🏆'
+  }
+];
+---
+
+<Layout title="首页 - 有理科技">
+  <Hero
+    title="有理科技"
+    subtitle="培养未来领袖，成就教育梦想"
+    image="/images/hero-bg.jpg"
+    opacity={0.6}
+  />
+
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">我们的优势</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {features.map(feature => (
+          <div 
+            class="bg-white p-8 rounded-lg shadow-lg text-center"
+            data-aos="fade-up"
+          >
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-bold mb-4">{feature.title}</h3>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">最新动态</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {newsItems.map(news => (
+          <NewsCard news={news} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

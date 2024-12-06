@@ -1,0 +1,53 @@
+---
+---
+
+<div id="map-container" class="w-full h-[300px] rounded-lg overflow-hidden"></div>
+
+<script is:inline>
+  window._AMapSecurityConfig = {
+    securityJsCode: 'YOUR_SECURITY_CODE',
+  };
+</script>
+
+<script>
+  // Function to load AMap script
+  function loadAMapScript() {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://webapi.amap.com/maps?v=2.0&key=YOUR_API_KEY';
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  // Function to initialize map
+  function initMap() {
+    const map = new AMap.Map('map-container', {
+      zoom: 15,
+      center: [119.892, 29.452]
+    });
+
+    const marker = new AMap.Marker({
+      position: [119.892, 29.452],
+      title: '有理科技'
+    });
+
+    map.add(marker);
+    map.addControl(new AMap.ToolBar());
+    map.addControl(new AMap.Scale());
+  }
+
+  // Load AMap and initialize
+  if (typeof AMap === 'undefined') {
+    loadAMapScript().then(() => {
+      // Wait for AMap to be fully loaded
+      window.onAMapLoaded = initMap;
+    }).catch(error => {
+      console.error('Failed to load AMap:', error);
+    });
+  } else {
+    initMap();
+  }
+</script>

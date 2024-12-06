@@ -1,0 +1,26 @@
+---
+import type { Ranking } from '../../data/achievements';
+
+interface Props {
+  ranking: Ranking;
+}
+
+const { ranking } = Astro.props;
+---
+
+<div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="fade-up">
+  {ranking.image && (
+    <img 
+      src={ranking.image} 
+      alt={ranking.title}
+      class="w-full h-48 object-cover"
+    />
+  )}
+  <div class="p-6">
+    <h3 class="text-xl font-bold mb-2">{ranking.title}</h3>
+    <div class="text-2xl font-bold text-primary mb-2">排名：{ranking.rank}</div>
+    <div class="text-gray-600 mb-2">评估机构：{ranking.organization}</div>
+    <div class="text-gray-600 mb-4">年份：{ranking.year}</div>
+    <p class="text-gray-700">{ranking.description}</p>
+  </div>
+</div>

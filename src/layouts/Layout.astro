@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '@fontsource/noto-sans-sc';
+import 'aos/dist/aos.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+// Transform the title to include the organization name if it's not already present
+const pageTitle = title.includes('有理科技') ? title : `${title} - 有理科技`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="有理科技 - 专业教育机构" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="font-sans">
+    <Header />
+    <main class="pt-16">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

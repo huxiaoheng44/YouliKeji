@@ -1,0 +1,61 @@
+---
+---
+
+<div 
+  id="enrollModal" 
+  class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+>
+  <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
+    <button 
+      onclick="closeEnrollModal()"
+      class="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="text-center">
+      <h3 class="text-xl font-bold mb-4">课程报名</h3>
+      <p class="text-gray-600 mb-6" id="enrollCourseText"></p>
+      
+      <div class="mb-6">
+        <img 
+          src="/images/wechat-qr.jpg" 
+          alt="微信二维码" 
+          class="w-48 h-48 mx-auto"
+        />
+      </div>
+      
+      <p class="text-gray-600">
+        扫描二维码，添加张老师微信<br>
+        了解更多详情并完成报名
+      </p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function showEnrollModal(courseName) {
+    const modal = document.getElementById('enrollModal');
+    const courseText = document.getElementById('enrollCourseText');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    courseText.textContent = `您选择的课程：${courseName}`;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEnrollModal() {
+    const modal = document.getElementById('enrollModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when clicking outside
+  document.getElementById('enrollModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      closeEnrollModal();
+    }
+  });
+</script>

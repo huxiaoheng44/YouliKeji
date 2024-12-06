@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CourseCard from '../components/admission/CourseCard.astro';
+import EnrollModal from '../components/admission/EnrollModal.astro';
+import ConsultationForm from '../components/consultation/ConsultationForm.astro';
+import { courses } from '../data/courses';
+---
+
+<Layout title="招生信息 - 有理科技">
+  <Hero
+    title="全年招生，欢迎咨询"
+    subtitle="帮助孩子提升思维与编程能力，为未来打下坚实基础"
+    image="/images/admission/admission-hero.jpg"
+  />
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">开设课程</h2>
+        <p class="text-gray-600">
+          我们提供多样化的课程选择，根据学生年龄和能力特点，
+          制定科学的教学计划，让每个孩子都能找到适合自己的学习路径。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {courses.map(course => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+
+      <div class="mt-16 max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h3 class="text-2xl font-bold mb-4 text-center">在线咨询</h3>
+          <ConsultationForm />
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold mb-4">联系我们</h3>
+          <p class="text-gray-600 mb-2">全年招生，欢迎随时咨询</p>
+          <p class="text-lg font-semibold text-primary mb-4">联系电话：+86 18266921075（张老师）</p>
+          <p class="text-gray-600">
+            扫描上方二维码添加微信，获取更多课程详情
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <EnrollModal />
+</Layout>

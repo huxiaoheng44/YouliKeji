@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  image: string;
+  opacity?: number; // 0 to 1, default will be 0.5
+}
+
+const { title, subtitle, image, opacity = 0.5 } = Astro.props;
+
+// Calculate the inverse of opacity for the text container
+const textContainerOpacity = 1 - opacity;
+---
+
+<section 
+  class="relative h-[80vh] flex items-center justify-center"
+>
+  <!-- Background Image with Customizable Opacity -->
+  <div 
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url(${image})`}
+  ></div>
+  
+  <!-- Overlay with Customizable Opacity -->
+  <div 
+    class="absolute inset-0 bg-black"
+    style={`opacity: ${opacity}`}
+  ></div>
+
+  <!-- Content -->
+  <div 
+    class="relative text-center text-white"
+    style={`opacity: ${1 + textContainerOpacity}`} 
+    data-aos="fade-up"
+  >
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
+    <p class="text-xl md:text-2xl">{subtitle}</p>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import TeacherList from '../components/about/TeacherList.astro';
+---
+
+<Layout title="关于我们 - 教育机构名称">
+  <Hero
+    title="关于我们"
+    subtitle="专业的教师团队，成就每一位学生"
+    image="/images/about/about-hero.jpg"
+    opacity={0.6}
+  />
+
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8">教育团队介绍</h2>
+        <div class="prose prose-lg mx-auto mb-16">
+          <p class="text-gray-600 leading-relaxed">
+            我们的教育团队由一群富有激情和经验的教育工作者组成。每位老师都拥有丰富的教学经验和专业资质，
+            致力于为学生提供最优质的教育服务。我们相信，优秀的教育不仅在于传授知识，更在于培养学生的学习能力、
+            创造力和独立思考能力。通过个性化的教学方案和科学的教学方法，我们帮助每一位学生发掘潜能，实现梦想。
+          </p>
+        </div>
+        
+        <TeacherList />
+      </div>
+    </div>
+  </section>
+</Layout>
